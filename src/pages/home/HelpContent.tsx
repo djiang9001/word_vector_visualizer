@@ -1,6 +1,6 @@
-import type { FC } from "react";
+import type { FC } from 'react';
 
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Link, Typography } from '@mui/material';
 
 export const HelpContent: FC = () => {
   return (
@@ -17,7 +17,7 @@ export const HelpContent: FC = () => {
       <Typography>
         Valid inputs are either single words, or differences between exactly two words in the format: wordA - wordB. The words must be exactly separated by the character sequence ' - ' (a single hyphen-minus with a single space on each side).
       </Typography>
-      <Link href={""} target="_blank" rel="noreferrer">Github</Link>
+      <Link href="https://github.com/djiang9001/word_vector_visualizer" target="_blank" rel="noreferrer">Github</Link>
     </Box>
   );
 }

@@ -1,18 +1,17 @@
 import type { FC, ReactNode } from 'react';
 import { useState } from 'react';
 
-import { Box, Grid, IconButton, Modal, Paper, Switch, Typography } from '@mui/material';
-import { useColorScheme } from '@mui/material/styles';
-
-import { AxisVectorInput } from './AxisVectorInput';
-import { NewVectorInput } from './NewVectorInput';
-import { UserVectorInput } from './UserVectorInput';
-import type { Vector } from './VectorPlot';
-
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
+import { Box, Grid, IconButton, Typography } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
-import { HelpContent } from './HelpContent';
+
+import { AxisVectorInput } from '@app/components/AxisVectorInput';
+import { DarkModeSwitch } from '@app/components/DarkModeSwitch';
+import { NewVectorInput } from '@app/components/NewVectorInput';
+import { Popup } from '@app/components/Popup';
+import { UserVectorInput } from '@app/components/UserVectorInput';
+
+import type { Vector } from '@app/pages/home/VectorPlot';
+import { HelpContent } from '@app/pages/home/HelpContent';
 
 export type WordVector = {
   label: string;
@@ -45,19 +44,13 @@ export const UserInputs: FC<UserInputsProp> = ({
   deleteUserWordVector,
 }) => {
 
-  const { mode, systemMode, setMode } = useColorScheme();
-  var actualMode = mode;
-  if (mode === "system") {
-    actualMode = systemMode;
-  }
-
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const userWordVectorComponents: ReactNode[] = [];
   var index = 0;
   userWordVectors.forEach((wordVector, _key) => {
     userWordVectorComponents.push(
-      <Grid size={12}>
+      <Grid key={wordVector?.label ?? ""} size={12}>
         <UserVectorInput key={wordVector?.label ?? ""} wordVector={wordVector} plotVector={plotVectors[index]}
           labelX={wordVectorX?.label} labelY={wordVectorY?.label} labelZ={wordVectorZ?.label}
           onDelete={(newWord) => deleteUserWordVector(newWord) }/>
@@ -79,14 +72,7 @@ export const UserInputs: FC<UserInputsProp> = ({
             }}>
               <HelpIcon color="primary"/>
             </IconButton>
-            <Switch checked={actualMode === "dark"} icon={<LightModeIcon color="primary"/>} checkedIcon={<DarkModeIcon color="primary"/>}
-              onClick={() => {
-                if (actualMode === "dark") {
-                  setMode("light");
-                } else {
-                  setMode("dark");
-                }
-            }}/>
+            <DarkModeSwitch/>
           </Box>
         </Grid>
         <Grid sx={{ display: "flex", alignItems: "center", gap: 2 }} size={12}>
@@ -106,27 +92,12 @@ export const UserInputs: FC<UserInputsProp> = ({
           <NewVectorInput onUpdate={(newWord) => addUserWordVector(newWord)}/>
         </Grid>
       </Grid>
-      <Modal
+      <Popup
         open={modalOpen}
         onClose={() => setModalOpen(false)}
       >
-        <Paper sx={{
-            display: "flex",
-            border: "none",
-            height: "75vh",
-            width: "75vw",
-            position: "absolute",
-            margin: "auto",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-        }}>
-          <Box sx={{ padding: 4, overflow: "auto" }}>
-            <HelpContent/>
-          </Box>
-        </Paper>
-      </Modal>
+        <HelpContent/>
+      </Popup>
     </Box>
   );
 

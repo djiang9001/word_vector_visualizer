@@ -1,5 +1,5 @@
-import type { Vector } from "./VectorPlot";
-import type { WordVector } from "./UserInputs";
+import type { Vector } from '@app/pages/home/VectorPlot';
+import type { WordVector } from '@app/pages/home/UserInputs';
 
 export function dotProduct(a: number[], b: number[]): number {
   if (a.length != b.length) {
@@ -57,7 +57,7 @@ export async function getWordVectorQuery(word: string): Promise<number[]> {
   }
   // Make the query
   const url = "https://raw.githubusercontent.com/djiang9001/word_vectors/refs/heads/main/data/" + filename;
-  return fetch(url, { cache: "force-cache" }).then((response) => { 
+  return fetch(url, { cache: "force-cache" }).then((response) => {
     if (!response.ok) {
       throw new Error(`HTTP response status: ${response.status}`);
     }

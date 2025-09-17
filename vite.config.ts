@@ -4,5 +4,10 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@app': '/src',
+    },
+  },
   base:'/word_vector_visualizer/',
 })

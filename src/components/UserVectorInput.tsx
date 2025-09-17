@@ -1,11 +1,14 @@
-import { useRef, useState } from 'react';
 import type { FC } from 'react';
+import { useRef, useState } from 'react';
 
-import type { WordVector } from './UserInputs';
-import { Box, Button, Modal, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
-import type { Vector } from './VectorPlot';
-import { getVectorFromWord } from './helpers';
+import { Popup } from '@app/components/Popup';
+
+import type { Vector } from '@app/pages/home/VectorPlot';
+import type { WordVector } from '@app/pages/home/UserInputs';
+
+import { getVectorFromWord } from '@app/helpers/helpers';
 
 type UserVectorInputProps = {
   wordVector: WordVector;
@@ -76,29 +79,14 @@ export const UserVectorInput: FC<UserVectorInputProps> = ({
       </Button>
 
     </Box>
-    <Modal
+    <Popup
       open={modalOpen}
       onClose={() => setModalOpen(false)}
     >
-      <Paper sx={{
-          display: "flex",
-          border: "none",
-          height: "75vh",
-          width: "75vw",
-          position: "absolute",
-          margin: "auto",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-      }}>
-        <Box sx={{ padding: 4, overflow: "auto" }}>
-          <Typography>
-            {modalContents}
-          </Typography>
-        </Box>
-      </Paper>
-    </Modal>
+      <Typography>
+        {modalContents}
+      </Typography>
+    </Popup>
   </>);
 
 }

@@ -1,11 +1,13 @@
-import { useRef } from 'react';
 import type { FC } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { useRef } from 'react';
+
 import { Html, Line, OrthographicCamera, PerspectiveCamera, OrbitControls, View } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { Layers, Vector3 } from 'three';
+import { MOUSE } from 'three';
+
 import { Box, Button } from '@mui/material';
 import { useColorScheme, useTheme } from '@mui/material/styles';
-import { Layers, Vector3 } from 'three';
-import * as THREE from 'three';
 
 export type Vector = {
   x: number;
@@ -97,9 +99,9 @@ export const VectorPlot: FC<VectorPlotProps> = ({
             <Scene labelX={labelX} labelY={labelY} vectors={vectors}/>
             <OrbitControls ref={xyOrbitControlRef} enableRotate={false} enableDamping={false}
               mouseButtons={{
-                LEFT: THREE.MOUSE.PAN,
-                MIDDLE: THREE.MOUSE.DOLLY,
-                RIGHT: THREE.MOUSE.ROTATE,
+                LEFT: MOUSE.PAN,
+                MIDDLE: MOUSE.DOLLY,
+                RIGHT: MOUSE.ROTATE,
               }}
             />
           </View>
@@ -114,9 +116,9 @@ export const VectorPlot: FC<VectorPlotProps> = ({
             <Scene labelX={labelX} labelZ={labelZ} vectors={vectors}/>
             <OrbitControls ref={xzOrbitControlRef} enableRotate={false} enableDamping={false}
               mouseButtons={{
-                LEFT: THREE.MOUSE.PAN,
-                MIDDLE: THREE.MOUSE.DOLLY,
-                RIGHT: THREE.MOUSE.ROTATE,
+                LEFT: MOUSE.PAN,
+                MIDDLE: MOUSE.DOLLY,
+                RIGHT: MOUSE.ROTATE,
               }}
             />
           </View>
@@ -131,9 +133,9 @@ export const VectorPlot: FC<VectorPlotProps> = ({
             <Scene labelY={labelY} labelZ={labelZ} vectors={vectors}/>
             <OrbitControls ref={yzOrbitControlRef} enableRotate={false} enableDamping={false}
               mouseButtons={{
-                LEFT: THREE.MOUSE.PAN,
-                MIDDLE: THREE.MOUSE.DOLLY,
-                RIGHT: THREE.MOUSE.ROTATE,
+                LEFT: MOUSE.PAN,
+                MIDDLE: MOUSE.DOLLY,
+                RIGHT: MOUSE.ROTATE,
               }}
             />
           </View>
