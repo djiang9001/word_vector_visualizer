@@ -48,19 +48,21 @@ export function setupTheme() {
         },
       },
       typography: {
-        fontFamily: "'Old Standard TT', Arial, sans-serif",
+        fontFamily: "'Old Standard TT', serif",
       },
       components: {
         MuiButton: {
           styleOverrides: {
             root: {
-              textTransform: "none",              
-            }
+              textTransform: "none",
+            },
+            outlined: ({ theme }) => ({
+              backgroundColor: theme.palette.background.default,
+            }),
           },
           defaultProps: {
-            variant: "contained",
+            variant: "outlined",
             disableElevation: true,
-
           },
         },
         MuiButtonBase: {

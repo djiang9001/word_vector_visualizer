@@ -14,7 +14,7 @@ export const NewVectorInput: FC<NewVectorInputProps> = ({ onUpdate }) => {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
       <TextField inputRef={fieldRef} sx={{ width: 150 }}/>
-      <Button sx={{}} variant="outlined" onClick={() => {
+      <Button sx={{}} onClick={() => {
           onUpdate(fieldRef?.current?.value.toLowerCase());
           if (fieldRef?.current) {
             fieldRef.current.value = "";

@@ -40,7 +40,7 @@ export const AxisVectorInput: FC<AxisVectorInputProps> = ({
         <TextField inputRef={fieldRef} defaultValue={wordVector?.label} sx={{ width: "100%" }}/>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row-reverse", gap: 1 }}>
-        <Button variant="outlined" onClick={() => {
+        <Button onClick={() => {
             onUpdate(fieldRef?.current?.value.toLowerCase());
           }}>
             <Typography>
@@ -50,7 +50,7 @@ export const AxisVectorInput: FC<AxisVectorInputProps> = ({
         {plotVector && <Typography>
           {plotVector.x} {labelX} {plotVector.y} {labelY} {plotVector.z} {labelZ}
         </Typography>}
-        <Button variant="outlined" onClick={() => {
+        <Button onClick={() => {
           onDelete(wordVector?.label);
           if (fieldRef?.current) {
             fieldRef.current.value = "";
@@ -60,7 +60,7 @@ export const AxisVectorInput: FC<AxisVectorInputProps> = ({
               Clear
             </Typography>
         </Button>
-        <Button variant="outlined" onClick={async () => {
+        <Button onClick={async () => {
           const wordVectorRaw = await getVectorFromWord(wordVector?.label ?? "");
           setModalContents((wordVector?.label ?? "") + " " + wordVectorRaw.join(" "));
           setModalOpen(true);

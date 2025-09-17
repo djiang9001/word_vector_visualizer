@@ -60,12 +60,12 @@ export const UserVectorInput: FC<UserVectorInputProps> = ({
       </Box>
     </Box>
     <Box sx={{ display: "flex", flexDirection: "row-reverse", gap: 1 }}>
-      <Button variant="outlined" onClick={() => { onDelete(wordVector?.label); }}>
+      <Button onClick={() => { onDelete(wordVector?.label); }}>
         <Typography>
           Delete
         </Typography>
       </Button>
-      <Button variant="outlined" onClick={async () => {
+      <Button onClick={async () => {
         const wordVectorRaw = await getVectorFromWord(wordVector?.label ?? "");
         setModalContents((wordVector?.label ?? "") + " " + wordVectorRaw.join(" "));
         setModalOpen(true);

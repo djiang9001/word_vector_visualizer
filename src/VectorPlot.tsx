@@ -86,7 +86,7 @@ export const VectorPlot: FC<VectorPlotProps> = ({
         <OrbitControls ref={mainOrbitControlRef} enableDamping={false}/>
         <Scene labelX={labelX} labelY={labelY} labelZ={labelZ} vectors={vectors}/>
       </View>
-      <Button variant="contained" sx={{ position: "absolute", zIndex: 3 }} onClick={() => mainOrbitControlRef.current.reset()}>
+      <Button sx={{ position: "absolute", zIndex: 3 }} onClick={() => mainOrbitControlRef.current.reset()}>
         Reset
       </Button>
       <Box style={{ display: "flex", height: "100%", width: "100%" }}>
@@ -103,7 +103,7 @@ export const VectorPlot: FC<VectorPlotProps> = ({
               }}
             />
           </View>
-          <Button variant="contained" sx={{ position: "absolute", zIndex: 3 }} onClick={() => xyOrbitControlRef.current.reset()}>
+          <Button sx={{ position: "absolute", zIndex: 3 }} onClick={() => xyOrbitControlRef.current.reset()}>
             Reset
           </Button>
         </Box>
@@ -120,7 +120,7 @@ export const VectorPlot: FC<VectorPlotProps> = ({
               }}
             />
           </View>
-          <Button variant="contained" sx={{ position: "absolute", zIndex: 3 }} onClick={() => xzOrbitControlRef.current.reset()}>
+          <Button sx={{ position: "absolute", zIndex: 3 }} onClick={() => xzOrbitControlRef.current.reset()}>
             Reset
           </Button>
         </Box>
@@ -137,7 +137,7 @@ export const VectorPlot: FC<VectorPlotProps> = ({
               }}
             />
           </View>
-          <Button variant="contained" sx={{ position: "absolute", zIndex: 3 }} onClick={() => yzOrbitControlRef.current.reset()}>
+          <Button sx={{ position: "absolute", zIndex: 3 }} onClick={() => yzOrbitControlRef.current.reset()}>
             Reset
           </Button>
         </Box>

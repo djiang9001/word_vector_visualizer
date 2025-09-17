@@ -4,6 +4,8 @@ Static React + Typescript web app for visualizing word vectors.
 
 [Demo](https://djiang9001.github.io/word_vector_visualizer/)
 
+![Screenshot](docs/screenshot.png?raw=true)
+
 ## Build
 
 Built using node version 24.6.0, npm version 11.5.1
