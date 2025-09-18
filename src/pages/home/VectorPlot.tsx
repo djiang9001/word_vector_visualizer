@@ -7,7 +7,7 @@ import { Layers, Vector3 } from 'three';
 import { MOUSE } from 'three';
 
 import { Box, Button } from '@mui/material';
-import { useColorScheme, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 
 export type Vector = {
   x: number;
@@ -41,12 +41,7 @@ export const VectorPlot: FC<VectorPlotProps> = ({
   vectors = [],
 }) => {
 
-  const { mode, systemMode } = useColorScheme();
   const theme = useTheme();
-  var actualMode = mode;
-  if (mode === "system") {
-    actualMode = systemMode;
-  }
   const backgroundColor = theme.palette.primary.contrastText;
 
   const mainOrbitControlRef = useRef<any>(null);
@@ -157,12 +152,8 @@ const Scene: FC<VectorPlotProps> = ({
   labelZ,
   vectors = [],
 }) => {
-  const { mode, systemMode } = useColorScheme();
-  var actualMode = mode;
-  if (mode === "system") {
-    actualMode = systemMode;
-  }
-  const lineColor = actualMode === "light" ? 'black' : 'white';
+  const theme = useTheme();
+  const lineColor = theme.palette.primary.main;
   return (<>
       {/* grid */}
       <gridHelper args={[10, 100, "grey", "grey"]} layers={LayerEnum.GRID_MAIN}/>
