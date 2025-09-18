@@ -29,11 +29,11 @@ export function setupTheme() {
         palette: {
           primary: {
             main: '#d0d0d0',
-            contrastText: '#202020',
+            contrastText: '#404040',
           },
           secondary: {
             main: '#b0b0b0',
-            contrastText: '#101010',
+            contrastText: '#202020',
           },
           background: {
             default: '#202020',

@@ -47,7 +47,7 @@ export const VectorPlot: FC<VectorPlotProps> = ({
   if (mode === "system") {
     actualMode = systemMode;
   }
-  const backgroundColor = actualMode === "light" ? '#d0d0d0' : '#404040';
+  const backgroundColor = theme.palette.primary.contrastText;
 
   const mainOrbitControlRef = useRef<any>(null);
   const xyOrbitControlRef = useRef<any>(null);
